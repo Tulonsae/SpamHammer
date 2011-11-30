@@ -2,7 +2,7 @@ package com.dumptruckman.spamhammer;
 
 import com.dumptruckman.spamhammer.commands.SpamHammerPluginCommand;
 import com.dumptruckman.spamhammer.listeners.SpamHammerPlayerListener;
-import com.dumptruckman.util.io.ConfigIO;
+import com.dumptruckman.spamhammer.config.ConfigIO;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginManager;
