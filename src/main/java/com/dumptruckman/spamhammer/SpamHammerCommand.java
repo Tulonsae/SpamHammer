@@ -1,23 +1,21 @@
-package com.dumptruckman.spamhammer.commands;
+package com.dumptruckman.spamhammer;
 
-import com.dumptruckman.spamhammer.SpamHammer;
+import java.util.List;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.List;
-
-import static com.dumptruckman.spamhammer.config.ConfigPath.*;
-
 /**
- * @author dumptruckman
+ * SpamHammer command processor.
+ * @author dumptruckman, modified by Tulonsae.
  */
-public class SpamHammerPluginCommand implements CommandExecutor {
+public class SpamHammerCommand implements CommandExecutor {
 
     SpamHammer plugin;
 
-    public SpamHammerPluginCommand(SpamHammer plugin) {
+    public SpamHammerCommand(SpamHammer plugin) {
         this.plugin = plugin;
     }
 
@@ -32,9 +30,9 @@ public class SpamHammerPluginCommand implements CommandExecutor {
             }
             if (plugin.isBanned(args[0])) {
                 plugin.unBanPlayer(args[0]);
-                sender.sendMessage(plugin.config.getString(UNBAN_COMMAND_MESSAGE_SUCCESS.toString()));
+                sender.sendMessage("Player has been unbanned.");
             } else {
-                sender.sendMessage(plugin.config.getString(UNBAN_COMMAND_MESSAGE_FAILURE.toString()));
+                sender.sendMessage("Player is not banned by SpamHammer.");
             }
             return true;
         } else if (command.getName().equals("spamunmute")) {
@@ -48,9 +46,9 @@ public class SpamHammerPluginCommand implements CommandExecutor {
             if (plugin.isMuted(args[0])) {
                 plugin.unMutePlayer(args[0]);
                 plugin.beenMuted.remove(args[0]);
-                sender.sendMessage(plugin.config.getString(UNMUTE_COMMAND_MESSAGE_SUCCESS.toString()));
+                sender.sendMessage("Player has been unmuted.");
             } else {
-                sender.sendMessage(plugin.config.getString(UNMUTE_COMMAND_MESSAGE_FAILURE.toString()));
+                sender.sendMessage("Player is not muted.");
             }
             return true;
         } else if (command.getName().equals("spamreset")) {
@@ -67,7 +65,7 @@ public class SpamHammerPluginCommand implements CommandExecutor {
             if (plugin.beenKicked(args[0])) {
                 plugin.beenKicked.remove(args[0]);
             }
-            sender.sendMessage(plugin.config.getString(RESET_COMMAND_MESSAGE_SUCCESS.toString()));
+            sender.sendMessage("Player's punishment level has been reset.");
             return true;
         } else {
             return false;

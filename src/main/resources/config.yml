@@ -14,15 +14,6 @@ kick:
 cooloff:
     message: Spamming punishment reset.  Be nice!
     time: 300
-commands:
-    unmute:
-        failure: Player is not muted.
-        success: Player has been unmuted.
-    unban:
-        failure: Player is not banned by SpamHammer.
-        success: Player has been unbanned
-    reset:
-        success: Player's punishment level reset.
 punishments:
     ban: true
     kick: true
